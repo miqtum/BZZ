@@ -17,10 +17,21 @@ scene.add(cube);
 
 camera.position.z = 5;
 
+//слайдер
+const slider = document.getElementById('slider');
+const sliderValue = document.getElementById('sliderValue');
+
+let rotY = 0;
+
+slider.addEventListener('input', (event) => {
+  rotY = event.target.value / 1000;
+  sliderValue.textContent = rotY.toFixed(4);
+  
+
 const animate = function () {
   requestAnimationFrame(animate);
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
+  cube.rotation.x += 0.00;
+  cube.rotation.y += rotY;
   renderer.render(scene, camera);
 };
 
